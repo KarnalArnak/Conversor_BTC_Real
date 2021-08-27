@@ -1,0 +1,27 @@
+pip install forex_python
+from forex_python.converter import CurrencyRates
+from forex_python.bitcoin import BtcConverter
+c = CurrencyRates()
+b = BtcConverter()
+escolha = int(input("""1-Converter Bitcoins para Reais
+2-Converter Reais para Bitcoins
+3-Sair
+"""))
+
+if escolha != 1 and escolha != 2 and escolha != 3 :
+  print('Opção não computada!')
+
+elif escolha == 1:
+  valorDigitado = float(input("Digite a quantidade de Bitcoins:"))
+  valorBTC = b.get_latest_price('BRL')
+  valorBRL = valorBTC*valorDigitado 
+  print(f"{valorDigitado} BTC equivale a {valorBRL:.2f} reais")
+
+elif escolha == 2:
+  valorDigitado = float(input("Digite a quantidade de Reais:"))
+  valorBTC = b.get_latest_price('BRL')
+  valorBRL = valorDigitado/valorBTC
+  print(f"{valorDigitado} reais equivale a {valorBRL:.8f} BTC")
+
+else:
+  print("Até mais!")
